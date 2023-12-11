@@ -7,7 +7,7 @@
 export default 
 {
     //PULAR
-    jump: new KeyboardEvent('Keydown', {key: 'Space', keyCode: 32}),
+    jump: new KeyboardEvent('keydown', {key: 'Space', keyCode: 32}),
 
     //AGACHAR
     crounch: new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40}),
