@@ -9,7 +9,7 @@ import utils from './utils.js'
 import RNA from './RNA.js'
 import controls from './controls.js'
 
-const SAMPLES = 20 //Número de dinossauros
+const SAMPLES = 2 //Número de dinossauros por geração
 const game = Runner.instance_; //Permitindo que o jogo seja sempre instanciado
 
 //Criando uma lista para os dinossauros
