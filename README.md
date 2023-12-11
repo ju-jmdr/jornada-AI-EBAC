@@ -4,4 +4,4 @@ O objetivo desta I.A. é gerar um dinossauro que seja capaz de alcançar a melho
 Este projeto esta sendo realizado com base no curso online e gratuito, "Jornada Tech: programe sua própria Inteligência Artificial", oferecido pela EBAC e ministrado por Jhonatan Eduardo e Pedro Brocaldi.
 | Linguagem de programação: JavaScript.
 | IDE utilizada: Visual Studio Code.
-| STATUS: projeto finalizado.
+| STATUS: projeto em desenvolvimento.
