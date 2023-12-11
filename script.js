@@ -6,8 +6,8 @@
 
 //Importando as funções da RNA
 import utils from './utils.js'
-import utils from './RNA.js'
-import utils from './controls.js'
+import RNA from './RNA.js'
+import controls from './controls.js'
 
 const SAMPLES = 20 //Número de dinossauros
 const game = Runner.instance_; //Permitindo que o jogo seja sempre instanciado
