@@ -30,34 +30,35 @@ class Neuron
  
     this.weightList = new Array(inputs)
     .fill()
-    .map(() => randomRange(-1,1))
-   }
-}
+    .map(() => randomRange(-1,1));
+   };
 
-// Função que calcula a saída do neurônio (ativação)
-  g(signalList = []) {
-    let u = 0;
 
-    // Calcula a soma ponderada dos sinais de entrada multiplicados pelos pesos
-    for (let i = 0; i < this.weightList.length; i++) {
-      u += signalList[i] * this.weightList[i];
-    }
+    // Função que calcula a saída do neurônio (ativação)
+      g(signalList = []) {
+        let u = 0;
+    
+        // Calcula a soma ponderada dos sinais de entrada multiplicados pelos pesos
+        for (let i = 0; i < this.weightList.length; i++) {
+          u += signalList[i] * this.weightList[i];
+        }
 
     //Verificando se o neurônio esta ativado ou não com base na função tangente
     //Se o sinal não for maior que o bias o neorônio não é ativado
     if (Math.tanh(u) > this.bias) return 1; // Ativado
     else return 0; // Não ativado
-  }
-
-//Mutação dos pesos
-mutate(rate = 0.2)
-{
-   this.weightList = this.weightList.map(() => {
-    return lerp(w, randomRange(-1, 1), rate)
-   });
-
-   this.bias = lerp(this.bias, randomRange(-1, 1), range);
-}
+      }
+    
+    //Mutação dos pesos
+    mutate(rate = 0.2)
+    {
+       this.weightList = this.weightList.map((w) => {
+        return lerp(w, randomRange(-1, 1), rate);
+       });
+    
+       this.bias = lerp(this.bias, randomRange(-1, 1), range);
+    }
+}    
 
 //CLASSE RNA
 class RNA
@@ -95,41 +96,40 @@ class RNA
             list = tempList;       
        }
        return list;
-
     }
-}
 
-mutate(rate = 1);
-{
-    for(const level of this.levelList)
+
+    mutate(rate = 1);
     {
-        for(const neuron of level) neuron.mutate(rate)
+        for(const level of this.levelList)
+        {
+            for(const neuron of level) neuron.mutate(rate)
+        }
     }
-}
 
-load(rna);
-{
-    if (!rna) return;
-    try
+    load(rna);
     {
-       this.levelList = rna.map((neuronList) => {
-        return neuronList.map((neuron) => {
-            const n = new Neuron();
-            n.bias = neuron.bias
-            n.weightList = neuron.weightList; //atribui a importãncia das diferentes entradas
-
-            return n;
-        });
-       });
-    }catch (e) //tratamento de erro
-    {
+        if (!rna) return;
+        try
+        {
+           this.levelList = rna.map((neuronList) => {
+            return neuronList.map((neuron) => {
+                const n = new Neuron();
+                n.bias = neuron.bias
+                n.weightList = neuron.weightList; //atribui a importãncia das diferentes entradas
+    
+                return n;
+            });
+           });
+        }catch (e) //tratamento de erro
+        {
         return;
-    }
-
-    save()
-    {
-        return this.levelList;
-    }
+        }    
+     }
+    
+        save()
+        {
+            return this.levelList;
+        }
 }
-
 export default RNA;
