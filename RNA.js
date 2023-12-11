@@ -34,25 +34,23 @@ class Neuron
    }
 }
 
-g(signalList = []);
-{
+// Função que calcula a saída do neurônio (ativação)
+  g(signalList = []) {
     let u = 0;
 
-    //Calculando a soma de sinais e multiplicando pelos pesos
-    for (let i = 0; i < this.weightList.lenght; i++)
-    {
-        u += signalList[i] * this.weightList[i];
+    // Calcula a soma ponderada dos sinais de entrada multiplicados pelos pesos
+    for (let i = 0; i < this.weightList.length; i++) {
+      u += signalList[i] * this.weightList[i];
     }
 
-    //Verificando se o neurônio esta ativado ou não
+    //Verificando se o neurônio esta ativado ou não com base na função tangente
     //Se o sinal não for maior que o bias o neorônio não é ativado
-
-    if(Math.tanh(u) > this.bias) return 1 //ATIVADO
-    else return 0; //NÃO ATIVADO
-}
+    if (Math.tanh(u) > this.bias) return 1; // Ativado
+    else return 0; // Não ativado
+  }
 
 //Mutação dos pesos
-mutate(rate = 1)
+mutate(rate = 0.2)
 {
    this.weightList = this.weightList.map(() => {
     return lerp(w, randomRange(-1, 1), rate)
